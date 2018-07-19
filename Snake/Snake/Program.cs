@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -10,25 +11,33 @@ namespace Snake
 	{
 		static void Main( string[] args )
 		{
-            int x1 = 1;
-            int y1 = 3;
-            char sym1 = '*';
+            HorizontalLine topLine = new HorizontalLine(0, 78, 0, '+');
+            HorizontalLine bottomLine = new HorizontalLine(0, 78, 24, '+');
+            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
+            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
 
-            Draw(x1, y1, sym1);
+            topLine.Draw();
+            bottomLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
 
-            int x2 = 4;
-            int y2 = 5;
-            char sym2 = '#';
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 5, Direction.RIGHT);
+            snake.Draw();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
 
-            Draw(x2, y2, sym2);
 
-            Console.ReadLine();
+            
 		}
-
-        static void Draw(int x, int y, char sym)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
-        }
 	}
 }
